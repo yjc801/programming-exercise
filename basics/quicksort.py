@@ -15,5 +15,5 @@ def partition(A,p,r):
 
 if __name__ == '__main__':
 	A = [4,2,6,1,3,0,5]
-	quicksort(A,0,6)
+	quicksort(A,0,len(A)-1)
 	print A
