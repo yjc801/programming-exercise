@@ -6,9 +6,8 @@ def quicksort(A,p,r):
 
 def partition(A,p,r):
 	firsthigh = p
-	h = r
 	for i in xrange(p,r):
-		if A[i] < A[h]:
+		if A[i] < A[r]:
 			A[i],A[firsthigh] = A[firsthigh],A[i]
 			firsthigh = firsthigh + 1
 	A[r],A[firsthigh] = A[firsthigh],A[r]
