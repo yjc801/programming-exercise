@@ -1,7 +1,7 @@
 def single_number(A):
 	res = 0
-	for i in xrange(len(A)):
-		res = res ^ A[i]
+	for i in A:
+		res = res ^ i
 	return res
 
 if __name__ == '__main__':
