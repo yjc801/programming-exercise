@@ -14,4 +14,4 @@ def sqrt(x):
 	return l
 
 if __name__ == '__main__':
-	print sqrt(121)
+	print sqrt(8194)
