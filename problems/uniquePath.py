@@ -10,12 +10,11 @@ class Solution:
 		for i in xrange(n):
 			res.append(1)
 		for i in xrange(1,m):
-			res[0] = 1
 			for j in xrange(1,n):
 				res[j] = res[j-1] + res[j]
 		return res[n-1]
 
 if __name__ == '__main__':
 	s = Solution()
-	print s.uniquePaths(3,7)
-	print s.uniquePaths2(3,7)
+	print s.uniquePaths(3,4)
+	print s.uniquePaths2(3,4)
