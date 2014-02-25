@@ -37,8 +37,6 @@ Node *returnNode(Node *head){
 			return chaser;
 		}
 	}
-	free(chaser);
-	free(runner);
 	return NULL;
 }
 
