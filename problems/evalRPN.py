@@ -1,9 +1,11 @@
+#!/usr/bin/env python
+
+
 def evalRPN(tokens):
     if len(tokens) == 0:
         return None
     elif len(tokens) == 1:
         return int(tokens[0])
-
     stack = []
     stack.append(tokens.pop())
     while stack:
@@ -21,11 +23,12 @@ def evalRPN(tokens):
             elif op == "/":
                 res = abs(num1)/abs(num2)
                 if num1 * num2 < 0:
-                    res = -res 
+                    res = -res
             tokens.append(str(res))
         else:
             stack.append(c)
     return tokens.pop()
+
 
 def isdigits(c):
     if c.isdigit():
@@ -40,4 +43,3 @@ def isdigits(c):
 s = ["1"]
 print(isdigits("-11"))
 print evalRPN(s)
-            

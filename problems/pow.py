@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 def pow1(x,n):
 	if x == 0:
 		return 0.0
