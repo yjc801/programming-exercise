@@ -38,7 +38,7 @@ class BST:
 
 def isBalanced(head): # O(nlogn)
 	if not head:
-		return False
+		return True
 	def helper(head):
 		if not head:
 			return 0
@@ -51,7 +51,25 @@ def isBalanced(head): # O(nlogn)
 		return False
 	return isBalanced(head.left) and isBalanced(head.right)
 
-def DFS(head):
+def isBalanced2(head): # O(n)
+	if not head:
+		return False
+
+	def helper(head):
+		if not head:
+			return 0
+		left = helper(head.left)
+		right = helper(head.right)
+
+		if left < 0 or right < 0 or abs(left-right) > 1:
+			return -1
+
+		return max(left,right)+1
+
+	return True if helper(head) > 0 else False 
+
+
+def BFS(head):
 	array = []
 	queue = deque()
 	queue.append(head)
@@ -135,6 +153,9 @@ def Postorder_iter2(head):
 				prev = top
 	return array
 
+def Levelorder(head):
+	pass
+
 
 def printList(head):
 	while head:
@@ -152,5 +173,6 @@ if __name__ == '__main__':
 	print "Postorder_iter %s" % Postorder_iter(root)
 	print "Postorder_iter2 %s" % Postorder_iter2(root)
 	print "isBalanced %s" % isBalanced(root)
+	print "isBalanced %s" % isBalanced2(root)
 	# head = bst.flatten(bst.root)
 	# print head.next.next.val
