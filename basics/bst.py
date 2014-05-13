@@ -70,16 +70,19 @@ def isBalanced2(head): # O(n)
 
 
 def BFS(head):
-	array = []
-	queue = deque()
-	queue.append(head)
-	while queue:
-		node = queue[0]
+	array = [[]]
+	queue1 = deque()
+	queue1.append(head)
+	queue2 = deque()
+	while queue1:
+		node = queue1.popleft()
 		if node:
-			array.append(queue[0].val)
-			queue.append(node.left)
-			queue.append(node.right)
-		queue.popleft()
+			array[-1].append(node.val)
+			queue2.append(node.left)
+			queue2.append(node.right)
+		if not queue1 and queue2:
+			array.append([])
+			queue1,queue2 = queue2,queue1
 	return array
 
 def Preorder(head,array):
@@ -166,7 +169,7 @@ if __name__ == '__main__':
 	bst = BST([1,2,3,4,5,6,7])
 	root = bst.root
 	print root.val
-	print "DFS %s" % DFS(root)
+	print "BFS %s" % BFS(root)
 	print "Preorder %s" % Preorder(root,[])
 	print "Preorder_iter %s" % Preorder_iter(root)
 	print "Inorder_iter %s" % Inorder_iter(root)
