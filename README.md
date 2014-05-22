@@ -1,4 +1,4 @@
 Programming exercise
 ====================
 
-A repository of programming exercises and my solutions
+A repository of programming exercises and solutions

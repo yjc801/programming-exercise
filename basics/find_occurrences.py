@@ -23,5 +23,9 @@ def right_boundary(A,key,low,high):
 		return right_boundary(A,key,middle+1,high)
 
 if __name__ == '__main__':
-	A = [1,2,3,3,3,3,3,4,6]
-	print find_occurence(A,3)
+	# A = [1,2,3,3,3,3,3,4,6]
+	A = [0,0,0,0,0,1,1,1,1,1,1,1,1]
+	print right_boundary(A,0,0,len(A)-1)
+	# print find_occurence(A,3)
+	for i in xrange(100,0,-1):
+		print i
