@@ -27,7 +27,7 @@ def longestPalindrome2(s):
         j = 2*center-i
         p[i] = min(p[j],right-i) if right > i else 0
         
-        while i+p[i] < n and t[i+p[i]] == t[i-p[i]]:
+        while i+p[i]+1 < n and t[i+p[i]+1] == t[i-p[i]-1]:
             p[i]+=1
 
         if i + p[i] > right:
@@ -39,8 +39,8 @@ def longestPalindrome2(s):
         if value > max_len:
             max_len = value
             max_index = key
-    start =  (max_index - max_len + 1)/2
-    length = max_len-1
+    start =  (max_index - max_len)/2
+    length = max_len
     return s[start:start+length]
 
 def transform(s):
