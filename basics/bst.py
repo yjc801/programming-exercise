@@ -157,7 +157,23 @@ def Postorder_iter2(head):
 	return array
 
 def Levelorder(head):
-	pass
+	res = []
+	level = []
+	curr = deque()
+	next = deque()
+	curr.append(head)
+	while curr:
+		while curr:
+			node = curr.popleft()
+			level.append(node.val)
+			if node.left:
+				next.append(node.left)
+			if node.right:
+				next.append(node.right)
+		res.append(level)
+		level = []
+		curr,next = next,curr
+	return res
 
 
 def printList(head):
@@ -175,6 +191,7 @@ if __name__ == '__main__':
 	print "Inorder_iter %s" % Inorder_iter(root)
 	print "Postorder_iter %s" % Postorder_iter(root)
 	print "Postorder_iter2 %s" % Postorder_iter2(root)
+	print "Levelorder %s" % Levelorder(root)
 	print "isBalanced %s" % isBalanced(root)
 	print "isBalanced %s" % isBalanced2(root)
 	# head = bst.flatten(bst.root)

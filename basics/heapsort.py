@@ -16,7 +16,7 @@ def buble_down(heap,p):
 	min_index = p
 	start = heap_child(p)
 	for i in xrange(0,2):
-		if (start+i) <= len(heap)-1:
+		if (start+i) < len(heap):
 			if heap[min_index]>heap[start+i]:
 				min_index = start+i
 	if min_index != p:

@@ -16,3 +16,17 @@ while x:
     counter+=1
 
 print counter
+
+A = [1,2]
+n = len(A)
+# A[A[0]],A[0] = A[0],A[A[0]]
+for i in xrange(n):
+    while A[i] != i:
+        if A[i] >= n:
+            break
+        A[A[i]],A[i] = A[i],A[A[i]]
+print A
+for i in xrange(1,n):
+	if A[i]!=i:
+		print i
+print n
