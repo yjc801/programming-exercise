@@ -34,9 +34,10 @@ class Graph():
         #pp(previous)
         s, u = [], dest
         while previous[u]:
-            s.insert(0, u)
+            s.append(u)
             u = previous[u]
-        s.insert(0, u)
+        s.append(u)
+        s.reverse()
         return s
  
  

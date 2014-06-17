@@ -96,13 +96,14 @@ def Preorder(head,array):
 def Preorder_iter(head):
 	array = []
 	stack = []
-	stack.append(head)
-	while stack:
-		node  = stack.pop()
+	node = head
+	# stack.append(head)
+	while stack or node:
 		if node:
 			array.append(node.val)
 			stack.append(node.right)
 			stack.append(node.left)
+		node  = stack.pop()
 	return array
 
 def Inorder_iter(head):
@@ -151,9 +152,9 @@ def Postorder_iter2(head):
 			if top.right and prev != top.right:
 				node = top.right
 			else:
-				stack.pop()
 				array.append(top.val)
 				prev = top
+				stack.pop()
 	return array
 
 def Levelorder(head):
