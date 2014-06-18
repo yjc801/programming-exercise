@@ -30,3 +30,57 @@ for i in xrange(1,n):
 	if A[i]!=i:
 		print i
 print n
+
+def heapsort(lst):
+  ''' Heapsort. Note: this function sorts in-place (it mutates the list). '''
+ 
+  # in pseudo-code, heapify only called once, so inline it here
+  for start in range((len(lst)-1)/2, -1, -1):
+    siftdown(lst, start, len(lst)-1)
+ 
+  for end in range(len(lst)-1, 0, -1):
+    lst[end], lst[0] = lst[0], lst[end]
+    siftdown(lst, 0, end - 1)
+  return lst
+ 
+def siftdown(lst, start, end):
+  root = start
+  while True:
+    child = root * 2 + 1
+    
+    if child > end:
+        break
+    
+    if child + 1 <= end:
+        child = max(child,child+1,key = lambda x:lst[x])
+
+    if lst[root] < lst[child]:
+        lst[root], lst[child] = lst[child], lst[root]
+        root = child
+    else:
+        break
+
+print heapsort([1,2,1,4,8,3])
+
+
+def max_sub(A):
+    temp = 0
+    res = -float('inf')
+    # n = len(A)
+    # res = [0]*n
+    # start = [0]*n
+    for key, value in enumerate(A):
+        temp = max(value,temp+value)
+        if temp > res:
+            res = temp
+        # if res[key-1]+value > value:
+            # res[key] = res[key-1]+value
+            # start[key] = start[key-1]
+        # else:
+            # res[key] = value
+            # start[key] = key
+    return res
+
+
+A = [4,-1,-2,1,-1,4,2,-5]
+print max_sub(A)
