@@ -8,10 +8,10 @@ def left_boundary(A,key,low,high):
 	if low > high:
 		return low
 	middle = (low+high)/2
-	if A[middle] < key:
-		return left_boundary(A,key,middle+1,high)
-	else:
+	if A[middle] >= key:
 		return left_boundary(A,key,low,middle-1)
+	else:
+		return left_boundary(A,key,middle+1,high)
 
 def right_boundary(A,key,low,high):
 	if low > high:
@@ -24,8 +24,7 @@ def right_boundary(A,key,low,high):
 
 if __name__ == '__main__':
 	# A = [1,2,3,3,3,3,3,4,6]
-	A = [0,0,0,0,0,1,1,1,1,1,1,1,1]
-	print right_boundary(A,0,0,len(A)-1)
+	A = [2]
+	print left_boundary(A,3,0,len(A)-1)
+	print right_boundary(A,3,0,len(A)-1)
 	# print find_occurence(A,3)
-	for i in xrange(100,0,-1):
-		print i

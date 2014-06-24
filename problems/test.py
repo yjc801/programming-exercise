@@ -84,3 +84,29 @@ def max_sub(A):
 
 A = [4,-1,-2,1,-1,4,2,-5]
 print max_sub(A)
+
+from functools import wraps
+
+def memo(func):
+    cache={}
+    @wraps(func)
+    def wrap(*args):
+        if args not in cache:
+            cache[args]=func(*args)
+        return cache[args]
+    return wrap
+
+
+cache = {}
+def dp(A,i):
+    if i in cache:
+        return cache[i]
+    if i == 0:
+        cache[i] = A[0]
+    else:
+        cache[i] = max(dp(A,i-1)+A[i],A[i])
+    return cache[i]
+
+A = [-4]
+print dp(A,len(A)-1)
+print max(cache.values())
