@@ -20,7 +20,7 @@ class Graph():
         for start, end, cost in self.edges:
             neighbours[start].add((end, cost))
         #pp(neighbours)
- 
+
         while q:
             u = min(q, key=lambda vertex: dist[vertex])
             q.remove(u)
