@@ -28,7 +28,24 @@ def twoSum2(numbers, target):
         	if size > 1:
         	    return (item[0],item[1])
 
+def twoSum3(num, target):
+    map = {}
+    res = []
+    for key, value in enumerate(num):
+        map[value] = key
+        
+    for i in xrange(len(num)):
+        gap = target - num[i]
+        if map.get(gap):
+            res.append([i+1,map[gap]+1])
+            
+            # res = [i+1,map[gap]+1]
+            # break
+    return tuple(res)
+
+
 if __name__ == '__main__':
-	A = [1,4,2,2]
+	A = [1,3,2]
 	# print twoSum(A,4)
 	print twoSum2(A,4)
+	print twoSum3(A,4)
