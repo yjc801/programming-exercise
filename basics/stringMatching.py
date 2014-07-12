@@ -22,31 +22,33 @@ def z_algorithm(s):
 	return z
 
 def kmp_prep(p):
-	i, j, m = 0, -1, len(p)
-	b = [-1]
+	i, j, m = 1, 0, len(p)
+	b = [0]
 	while i < m:
-		while j > -1 and p[i]!=p[j]:
-			j = b[j]
-		j+=1
-		i+=1
+		while j > 0 and p[i]!=p[j]:
+			j = b[j-1]
+		if p[i] == p[j]:
+			j+=1
 		b.append(j)
+		i+=1
 	return b
 
 def kmp(t,p):
 	i, j, n, m = 0, 0, len(t), len(p)
-	if m == 0:
+	if m == 0 and n == 0:
 		return ""
+	if m == 0:
+		return t
 	b = kmp_prep(p)
 	while i < n:
-		while j > -1 and t[i]!=p[j]:
-			j = b[j]
-		i+=1
-		j+=1
+		while j > 0 and t[i]!=p[j]:
+			j = b[j-1]
+		if t[i] == p[j]:
+			j+=1
 		if j == m:
-			return t[i-j:]
+			return t[i-j+1:]
+		i+=1
 	return None
-
-
 
 if __name__ == '__main__':
 	T = "mississippi"
@@ -55,8 +57,10 @@ if __name__ == '__main__':
 	s = 'bbaaccaadd'*2
 	# s = 'ccaaddbbaa'+'&'+s
 	z = z_algorithm(s)
-	print z
-	print kmp("","")
+	# print z
+	# print kmp_prep(s)
+	print kmp("aaa","aa")
+	print kmp(T,P)
 	# for key, value in enumerate(z):
 	# 	if value == len(P):
 	# 		print S[key:]
