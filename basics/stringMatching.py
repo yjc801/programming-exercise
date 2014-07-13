@@ -53,14 +53,9 @@ def kmp(t,p):
 if __name__ == '__main__':
 	T = "mississippi"
 	P = "issip"
-	# S = P+"&"+T
 	s = 'bbaaccaadd'*2
-	# s = 'ccaaddbbaa'+'&'+s
 	z = z_algorithm(s)
-	# print z
-	# print kmp_prep(s)
-	print kmp("aaa","aa")
+	print z
+	print kmp_prep(P)
 	print kmp(T,P)
-	# for key, value in enumerate(z):
-	# 	if value == len(P):
-	# 		print S[key:]
+	print kmp("aaa","aa")
