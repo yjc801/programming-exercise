@@ -10,9 +10,9 @@ def sumNumbers(root):
 def helper(node,path):
 	if not node:
 		return 0
-	path += str(node.val)
 	if not node.left and not node.right:
-		return int(path)
+		return int(path+str(node.val))
+	path += str(node.val)
 	return helper(node.left,path) + helper(node.right,path)
 
 if __name__ == '__main__':
