@@ -19,7 +19,20 @@ def intToRoman(num):
         d /= 10
     return res
 
+def intToRoman2(num):
+    digit = [1000,900,500,400,100,90,50,40,10,9,5,4,1]
+    symbol = ['M','CM','D','CD','C','XC','L','XL','X','IX','V','IV','I']
+    res = ""
+    while num:
+        for i in xrange(len(digit)):
+            if digit[i] <= num:
+                num-=digit[i]
+                res+=symbol[i]
+                break
+    return res
+
 if __name__ == '__main__':
     print intToRoman(3586)
+    print intToRoman2(3586)
     print intToRoman(5)
     print intToRoman(6)
