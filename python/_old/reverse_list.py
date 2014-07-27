@@ -3,47 +3,7 @@ class ListNode:
         self.val = x
         self.next = None
 
-
 def reverseBetween(head, m, n):
-    if head == None or head.next == None:
-        return head
-    counter = m
-    
-    dummy_head = ListNode(0)
-    dummy_head.next = head
-    p = dummy_head
-
-    while counter:
-        p = p.next
-        counter-=1
-    prev = p
-    p = p.next
-    prev.next = reverseList(p,n-m+1)
-    return dummy_head.next
-
-def reverseList(head,counter):
-    prev, curr = None, head
-    while counter:
-        temp = curr.next
-        curr.next = prev
-        prev = curr
-        curr = temp
-        counter-=1
-    head.next, head = curr, prev
-    return head
-
-def reverseRec(head):
-    if not head:
-        return
-    p = head.next
-    if not p:
-        return
-    reverseRec(p)
-    p.next = head
-    head.next = None
-    # how to fix head?
-
-def reverseBetween2(head, m, n):
     dummy = ListNode(0)
     dummy.next = head
     prev, curr = None, dummy
@@ -67,7 +27,44 @@ def reverseBetween2(head, m, n):
 
     return dummy.next
 
+def reverseKGroup(head, k):
+    dummy = ListNode(-1)
+    dummy.next = head
+    prev, curr = dummy, head
+    while curr:
+        p = curr
+        count = k
+        while p and count-1:
+            p, count = p.next, count-1
+        if not p:
+            break
+        prev, curr = curr, reverseList(prev, curr, k)
+    return dummy.next
+
+def reverseList(before_start, head,counter):
+    prev, curr = None, head
+    while counter:
+        temp = curr.next
+        curr.next = prev
+        prev = curr
+        curr = temp
+        counter-=1
+    head.next, head = curr, prev
+    before_start.next = head
+    return curr
+
+def printList(head):
+    p = head
+    count = 5
+    while count:
+        print p.val
+        p=p.next
+        count-=1
+
+# Basics
 def reverse(root):
+    ''' Reverse whole list
+    '''
     prev, curr = None, root
     while curr:
         temp = curr.next
@@ -77,17 +74,13 @@ def reverse(root):
     return prev
 
 def move(root,k):
+    ''' move k steps, return the k+1 th node 
+    '''
     while k:
         root, k = root.next, k-1
     print root.val
+    return root
 
-def printList(head):
-    p = head
-    count = 5
-    while count:
-        print p.val
-        p=p.next
-        count-=1
 
 if __name__ == '__main__':
     head = ListNode(1)
@@ -101,5 +94,6 @@ if __name__ == '__main__':
     # head = reverseList(head,counter)
     # head = reverseBetween2(head,1,2)
     # head = reverse(head)
-    move(head,2)
-    # printList(head)
+    # move(head,2)
+    head = reverseKGroup(head,4)
+    printList(head)
